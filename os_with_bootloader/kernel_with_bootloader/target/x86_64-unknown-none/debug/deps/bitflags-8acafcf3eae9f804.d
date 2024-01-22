@@ -1,0 +1,11 @@
+C:\Users\ayoba\OneDrive\Desktop\CSC305\os_with_bootloader\kernel_with_bootloader\target\x86_64-unknown-none\debug\deps\libbitflags-8acafcf3eae9f804.rmeta: C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\lib.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\iter.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\parser.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\traits.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\public.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\internal.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\external.rs
+
+C:\Users\ayoba\OneDrive\Desktop\CSC305\os_with_bootloader\kernel_with_bootloader\target\x86_64-unknown-none\debug\deps\bitflags-8acafcf3eae9f804.d: C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\lib.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\iter.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\parser.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\traits.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\public.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\internal.rs C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\external.rs
+
+C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\lib.rs:
+C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\iter.rs:
+C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\parser.rs:
+C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\traits.rs:
+C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\public.rs:
+C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\internal.rs:
+C:\Users\ayoba\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bitflags-2.4.2\src\external.rs:

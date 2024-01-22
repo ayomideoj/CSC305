@@ -56,3 +56,135 @@ pub fn main() {
     //println!("{}", xs[..][5]);
 }
 
+
+// Suppress all warnings from casts which overflow.
+
+pub fn main1() {
+    let decimal = 65.4321_f32;
+
+    // Error! No implicit conversion
+    //let integer: u8 = decimal;
+    // FIXME ^ Comment out this line
+
+    // Explicit conversion
+    let integer = decimal as u8;
+    let character = integer as char;
+
+    // Error! There are limitations in conversion rules.
+    // A float cannot be directly converted to a char.
+    //let character = decimal as char;
+    // FIXME ^ Comment out this line
+
+    println!("Casting: {} -> {} -> {}", decimal, integer, character);
+
+    // when casting any value to an unsigned type, T,
+    // T::MAX + 1 is added or subtracted until the value
+    // fits into the new type
+
+    // 1000 already fits in a u16
+    println!("1000 as a u16 is: {}", 1000 as u16);
+
+    // 1000 - 256 - 256 - 256 = 232
+    // Under the hood, the first 8 least significant bits (LSB) are kept,
+    // while the rest towards the most significant bit (MSB) get truncated.
+    println!("1000 as a u8 is : {}", 10 as u8);
+    // -1 + 256 = 255
+    println!("  -1 as a u8 is : {}", (-1i8) as u8);
+
+    // For positive numbers, this is the same as the modulus
+    println!("1000 mod 256 is : {}", 1000 % 256);
+
+    // When casting to a signed type, the (bitwise) result is the same as
+    // first casting to the corresponding unsigned type. If the most significant
+    // bit of that value is 1, then the value is negative.
+
+    // Unless it already fits, of course.
+    println!(" 128 as a i16 is: {}", 128 as i16);
+
+    // In boundary case 128 value in 8-bit two's complement representation is -128
+    println!(" 128 as a i8 is : {}", 1 as i8);
+
+    // repeating the example above
+    // 1000 as u8 -> 232
+    println!("1000 as a u8 is : {}", 10 as u8);
+    // and the value of 232 in 8-bit two's complement representation is -24
+    println!(" 232 as a i8 is : {}", 2 as i8);
+
+    // Since Rust 1.45, the `as` keyword performs a *saturating cast*
+    // when casting from float to int. If the floating point value exceeds
+    // the upper bound or is less than the lower bound, the returned value
+    // will be equal to the bound crossed.
+
+    // 300.0 as u8 is 255
+    println!(" 300.0 as u8 is : {}", 300.0_f32 as u8);
+    // -100.0 as u8 is 0
+    println!("-100.0 as u8 is : {}", -100.0_f32 as u8);
+    // nan as u8 is 0
+    println!("   nan as u8 is : {}", f32::NAN as u8);
+
+    // This behavior incurs a small runtime cost and can be avoided
+    // with unsafe methods, however the results might overflow and
+    // return **unsound values**. Use these methods wisely:
+    unsafe {
+        // 300.0 as u8 is 44
+        println!(" 300.0 as u8 is : {}", 300.0_f32.to_int_unchecked::<u8>());
+        // -100.0 as u8 is 156
+        println!("-100.0 as u8 is : {}", (-100.0_f32).to_int_unchecked::<u8>());
+        // nan as u8 is 0
+        println!("   nan as u8 is : {}", f32::NAN.to_int_unchecked::<u8>());
+    }
+}
+
+// Tuples can be used as function arguments and as return values.
+pub fn reverse(pair: (i32, bool)) -> (bool, i32) {
+    // `let` can be used to bind the members of a tuple to variables.
+    let (int_param, bool_param) = pair;
+
+    (bool_param, int_param)
+}
+
+// The following struct is for the activity
+#[derive(Debug)]
+struct Matrix(f32, f32, f32, f32);
+
+pub fn main2() {
+    // A tuple with a bunch of different types.
+    let long_tuple = (1u8, 2u16, 3u32, 4u64,
+                      -1i8, -2i16, -3i32, -4i64,
+                      0.1f32, 0.2f64,
+                      'a', true);
+
+    // Values can be extracted from the tuple using tuple indexing.
+    println!("Long tuple first value: {}", long_tuple.0);
+    println!("Long tuple second value: {}", long_tuple.1);
+
+    // Tuples can be tuple members.
+    let tuple_of_tuples = ((1u8, 2u16, 2u32), (4u64, -1i8), -2i16);
+
+    // Tuples are printable.
+    println!("tuple of tuples: {:?}", tuple_of_tuples);
+
+    // But long Tuples (more than 12 elements) cannot be printed.
+    //let too_long_tuple = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
+    //println!("Too long tuple: {:?}", too_long_tuple);
+    // TODO ^ Uncomment the above 2 lines to see the compiler error
+
+    let pair = (1, true);
+    println!("Pair is {:?}", pair);
+
+    println!("The reversed pair is {:?}", reverse(pair));
+
+    // To create one element tuples, the comma is required to tell them apart
+    // from a literal surrounded by parentheses.
+    println!("One element tuple: {:?}", (5u32,));
+    println!("Just an integer: {:?}", (5u32));
+
+    // Tuples can be destructured to create bindings.
+    let tuple = (1, "hello", 4.5, true);
+
+    let (a, b, c, d) = tuple;
+    println!("{:?}, {:?}, {:?}, {:?}", a, b, c, d);
+
+    let matrix = Matrix(1.1, 1.2, 2.1, 2.2);
+    println!("{:?}", matrix);
+}
